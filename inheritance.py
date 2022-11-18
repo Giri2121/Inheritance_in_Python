@@ -13,7 +13,8 @@ print('==='*15)
 print('Single Inheritance')
 print('==='*15)
 c = Child()
-c.m1() #can access parent class methods aswell
+#Child class will have access to parent class methods as well
+c.m1() 
 c.m2()
 
 
@@ -33,8 +34,36 @@ class Son(Father):
 print('\n')
 print('==='*15)
 print('Multi level Inheritance')
-print('==='*15)       
+print('==='*15)  
 s = Son()
 s.m1()
 s.m2()
 s.m3()
+
+#Hierarchial Inheritance
+class Parent:
+    def m1(self):
+        print('Single Parent class')
+
+class Child1(Parent):
+    def m2(self):
+        print('child class 1')
+
+class Child2(Parent):
+    def m3(self):
+        print('child class 2')
+
+        
+print('\n')
+print('==='*15)
+print('Hierarchial Inheritance')
+print('==='*15)
+c1 = Child1()
+c1.m1()
+c1.m2()
+c1.m3() # we get AttributeError: 'Child1' object has no attribute 'm3'; since method m3 belongs to child class 2 and actually not present in either of parent class and Child1 class.
+c2 = Child2()
+c2.m1()
+c2.m2() #AttributeError: 'Child2' object has no attribute 'm2'. Same as explained above
+c2.m3()
+
