@@ -61,9 +61,50 @@ print('==='*15)
 c1 = Child1()
 c1.m1()
 c1.m2()
-c1.m3() # we get AttributeError: 'Child1' object has no attribute 'm3'; since method m3 belongs to child class 2 and actually not present in either of parent class and Child1 class.
+#c1.m3() # we get AttributeError: 'Child1' object has no attribute 'm3'; since method m3 belongs to child class 2 and actually not present in either of parent class and Child1 class.
 c2 = Child2()
 c2.m1()
-c2.m2() #AttributeError: 'Child2' object has no attribute 'm2'. Same as explained above
+#c2.m2() #AttributeError: 'Child2' object has no attribute 'm2'. Same as explained above
 c2.m3()
 
+
+#Diamond access problem in multiple inheritance
+class Parent1:
+    def m1(self):
+        print('parent 1 method')
+        
+class Parent2:
+    def m1(self):
+        print('parent 2 method')
+        
+class Child(Parent1,Parent2):
+    def m1(self):
+        print('child method')
+
+print('\n')
+print('==='*15)
+print('Diamond Access problem resolution')
+print('Method exists in child class')
+print('==='*15)       
+c = Child()
+c.m1() #child method
+
+class Parent1:
+    def m1(self):
+        print('parent 1 method')
+        
+class Parent2:
+    def m1(self):
+        print('parent 2 method')
+        
+class Child(Parent1,Parent2):
+    pass
+
+print('\n')
+print('==='*15)
+print('Diamond Access problem resolution')
+print('Method doent not exist in child class,depends on order of parent class')
+print('==='*15) 
+c = Child()
+c.m1() #parent 1 method since its the first passed to the child class
+#parent 2 method will get executed if its passed first
