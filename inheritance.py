@@ -67,6 +67,28 @@ c2.m1()
 #c2.m2() #AttributeError: 'Child2' object has no attribute 'm2'. Same as explained above
 c2.m3()
 
+#Multiple Inheritance
+class Parent1:
+	def m1(self):
+		print('parent1 class')
+		
+class Parent2:
+	def m2(self):
+		print('parent2 class')
+		
+class Child(Parent1,Parent2):
+	def m3(self):
+	    print('child class')
+	    
+print('\n')
+print('==='*15)
+print('Multiple Inheritance')
+print('==='*15)
+c = Child()
+c.m3()
+c.m2()
+c.m1()
+
 
 #Diamond access problem in multiple inheritance
 class Parent1:
@@ -108,3 +130,5 @@ print('==='*15)
 c = Child()
 c.m1() #parent 1 method since its the first passed to the child class
 #parent 2 method will get executed if its passed first
+
+
